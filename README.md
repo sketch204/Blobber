@@ -13,6 +13,9 @@ let blob = blobber.store(data)
 
 // Retrieve later using the generate ID
 let blobAgain = blobber.blob(for: blob.id)
+
+// Blobber also has built-in support for `NSImage` and `UIImage` instances.
+let imageBlob = blobber.store(image)
 ```
 
 `Blobber` doesn't handle the actual saving to disk, and instead defers that to a `BlobberPersistenceManager` instance. By default it is created with a `FilePersistenceManager`, which is why it will **default to saving blobs to disk**.
