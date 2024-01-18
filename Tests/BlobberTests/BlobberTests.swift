@@ -29,7 +29,7 @@ final class BlobberTests: XCTestCase {
         let testData = "Custom ID Blob".data(using: .utf8)!
         
         // Test storing a blob with a custom ID
-        let blob = try await blobber.store(testData, for: customID)
+        let _ = try await blobber.store(testData, for: customID)
         
         // Verify the data is stored in the persistence manager with the custom ID
         let storedData = try XCTUnwrap(persistenceManager.storage[customID])
