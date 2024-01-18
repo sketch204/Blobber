@@ -2,6 +2,10 @@ import Foundation
 
 public struct Blobber {
     public let persistenceManager: BlobberPersistenceManager
+    
+    public init(persistenceManager: BlobberPersistenceManager = FilePersistenceManager()) {
+        self.persistenceManager = persistenceManager
+    }
 }
 
 extension Blobber {
