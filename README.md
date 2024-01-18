@@ -11,7 +11,7 @@ let blobber = Blobber()
 // Save some data to it
 let blob = blobber.store(data)
 
-// Retrieve later using the generate ID
+// Retrieve it later using the generated ID
 let blobAgain = blobber.blob(for: blob.id)
 
 // Blobber also has built-in support for `NSImage` and `UIImage` instances.
@@ -23,16 +23,20 @@ let imageBlob = blobber.store(image)
 If you want to store blobs in memory, you can instead use the `MemoryPersistenceManager`.
 
 ```Swift
-let memoryBlobber = Blobber(persistenceManager: MemoryPersistenceManager)
+let memoryBlobber = Blobber(persistenceManager: MemoryPersistenceManager())
 ```  
 
-By default, `FilePersistenceManager` will save blobs at the root documents directory. You can customize that as well.
+By default, `FilePersistenceManager` will save blobs at the root of the documents directory. You can customize that as well.
 
 ```Swift
-let customLocationBlobber = Blobber(persistenceManager: FilePersistenceManager(baseUrl: someCustomDirectory))
+let customLocationBlobber = Blobber(
+    persistenceManager: FilePersistenceManager(
+        baseUrl: someCustomDirectory
+    )
+)
 ```
 
-You can also provide your own custom persistence manager by implementing the `BlobberPersistenceManager` protocol. All methods are `async throws` so you could even store data on a remote somewhere.
+You can also provide a custom persistence manager by implementing the `BlobberPersistenceManager` protocol. All methods are `async throws` so you could even store data remotely somewhere.
 
 ```Swift
 class MemoryPersistenceManager: BlobberPersistenceManager {
